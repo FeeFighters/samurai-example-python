@@ -1,0 +1,11 @@
+{% include "base.html" %}
+{% block content %}
+<div id='articles'>
+  {% for article in articles %}
+    <h2>
+        <a href="/articles/{{ article.id }}/">{{ article.name }}</a>
+    </h2>
+  {% endfor %}
+</div>
+{% endblock %}
+
