@@ -1,15 +1,11 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from sample.sample_app.models import *
-from sample.sample_app.forms import OrderForm
-
-def home(request):
-    articles = Articles.objects.all().values()
-    return render_to_response('sample_app/home.html', {'articles': articles})
+from sample.forms import OrderForm
 
 def articles(request):
     articles = Articles.objects.all().values()
-    return render_to_response('sample_app/home.html', {'articles': articles})
+    return render_to_response('sample_app/articles.html', {'articles': articles})
 
 def article_detail(request, article_id):
     article = get_object_or_404(Articles, pk=article_id)
@@ -19,7 +15,7 @@ def article_detail(request, article_id):
         form = OrderForm()
         return render_to_response('sample_app/order.html', {'form': form})
 
-def order():
+def order(request):
     pass
 
 def purchased():

@@ -13,3 +13,8 @@ class OrderForm(forms.Form):
     cvv = forms.CharField()
     expiry_month = forms.ChoiceField(choices=MONTHS)
     expiry_year = forms.ChoiceField(choices=YEARS)
+
+class ServerToServerForm(forms.Form):
+    card_number = forms.CharField()
+    cvv = forms.CharField()
+
