@@ -16,8 +16,9 @@
   <section>
     <h2>Enter your payment information:</h2>
     <div class='samurai'>
-      <form action="/server_to_server/purchase/" method="post" accept-charset="utf-8">
+      <form action="https://api.samurai.feefighters.com/v1/payment_methods" method="post" accept-charset="utf-8">
       {% csrf_token %}
+        <input name="redirect_url" type="hidden" value="http://127.0.0.1:8000/server_to_server/purchase/" />
         {{ form.as_p }}
         <input type="submit" value="Purchase">
       </form>
