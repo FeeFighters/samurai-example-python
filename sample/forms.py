@@ -18,3 +18,7 @@ class ServerToServerForm(forms.Form):
     card_number = forms.CharField()
     cvv = forms.CharField()
 
+class TransparentRedirectForm(forms.Form):
+    card_number = forms.CharField()
+    cvv = forms.CharField()
+

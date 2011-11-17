@@ -12,10 +12,24 @@ urlpatterns = patterns('',
     url(r'^articles/$', 'sample.sample_app.views.articles', name='articles'),
     url(r'^articles/(?P<article_id>\d+)/$', 'sample.sample_app.views.article_detail', name='article_detail'),
     url(r'^order/$', 'sample.sample_app.views.order', name='order'),
-    url(r'^samurai_js/$', 'sample.samurai_js.views.payment_form', name='samurai_js'),
-    url(r'^server_to_server/$', 'sample.server_to_server.views.payment_form', name='server_to_server'),
-    url(r'^transparent_redirect/$', 'sample.transparent_redirect.views.payment_form', name='transparent_redirect'),
 
+    url(r'^samurai_js/payment_form/$', 'sample.samurai_js.views.payment_form', name='samurai_js_payment_form'),
+    url(r'^samurai_js/purchase/$', 'sample.samurai_js.views.purchase', name='samurai_js_purchase'),
+    url(r'^samurai_js/receipt/$', 'sample.samurai_js.views.receipt', name='samurai_js_receipt'),
+
+    url(r'^server_to_server/payment_form/$', 'sample.server_to_server.views.payment_form',
+        name='server_to_server_payment_form'),
+    url(r'^server_to_server/purchase/$', 'sample.server_to_server.views.purchase',
+        name='server_to_server_purchase'),
+    url(r'^server_to_server/receipt/$', 'sample.server_to_server.views.receipt',
+        name='server_to_server_receipt'),
+
+    url(r'^transparent_redirect/payment_form/$', 'sample.transparent_redirect.views.payment_form',
+        name='transparent_redirect_payment_form'),
+    url(r'^transparent_redirect/purchase/$', 'sample.transparent_redirect.views.purchase',
+        name='transparent_redirect_purchase'),
+    url(r'^transparent_redirect/receipt/$', 'sample.transparent_redirect.views.receipt',
+        name='transparent_redirect_receipt'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
