@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
+from django.http import HttpResponse
 from sample.forms import TransparentRedirectForm
 
 
@@ -10,7 +11,7 @@ from sample.forms import TransparentRedirectForm
 # * Payment form is initialized with PaymentMethod data, if a token is passed in the params.
 #   This allows validation & processor-response error messages to be displayed.
 def payment_form(request):
-    form = TransparentRedirectForm()
+    form = TransparentRedirectForm(auto_id='credit_card_%s')
     return render_to_response('transparent_redirect/payment_form.html', {'form': form},
                               context_instance=RequestContext(request))
 
@@ -22,9 +23,9 @@ def payment_form(request):
 # * On error, it redirects back to the payment form to display validation/card errors
 #
 def purchase(request):
+    payment_method_token = request.GET['payment_method_token']
     #purchase processing done here
-    pass
-
+    return HttpResponse('Payment method token is %s. Implementation Pending' % payment_method_token)
 
 # Purchase confirmation & receipt page
 # ------------------------------------
