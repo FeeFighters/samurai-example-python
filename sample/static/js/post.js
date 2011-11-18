@@ -1,3 +1,9 @@
+/* 
+ * Overwriting ajaxSend function of jQuery to prvent error due to
+ * CSRF check while doing .post ajax request.
+ *
+ * */
+
 if (!$)
     var $ = django.jQuery;
 

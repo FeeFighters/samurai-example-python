@@ -1,6 +1,10 @@
+# Form helpers
+# -------------------------------------
+#
+
 from django import forms
 
-class OrderForm(forms.Form):
+class ServerToServerForm(forms.Form):
     YEARS = (('2011','2011'),('2012','2012'))
     MONTHS = (('1','1'),('2','2'),('3','3'))
     first_name = forms.CharField(max_length=100)
@@ -13,10 +17,6 @@ class OrderForm(forms.Form):
     cvv = forms.CharField()
     expiry_month = forms.ChoiceField(choices=MONTHS)
     expiry_year = forms.ChoiceField(choices=YEARS)
-
-class ServerToServerForm(forms.Form):
-    card_number = forms.CharField()
-    cvv = forms.CharField()
 
 class TransparentRedirectForm(forms.Form):
     card_number = forms.CharField()
