@@ -9,9 +9,6 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', direct_to_template, {'template': 'home.html'}),
     # url(r'^sample/', include('sample.foo.urls')),
-    url(r'^articles/$', 'sample.sample_app.views.articles', name='articles'),
-    url(r'^articles/(?P<article_id>\d+)/$', 'sample.sample_app.views.article_detail', name='article_detail'),
-    url(r'^order/$', 'sample.sample_app.views.order', name='order'),
 
     url(r'^samurai_js/payment_form/$', 'sample.samurai_js.views.payment_form', name='samurai_js_payment_form'),
     url(r'^samurai_js/purchase/$', 'sample.samurai_js.views.purchase', name='samurai_js_purchase'),

@@ -118,7 +118,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    'sample_app',
     'samurai_js',
     'server_to_server',
     'transparent_redirect',
