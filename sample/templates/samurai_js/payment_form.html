@@ -1,6 +1,8 @@
 {% block content %}
 <head>
   <script type="text/javascript" src="https://samurai.feefighters.com/assets/api/samurai.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL}}js/jquery.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL}}js/post.js"></script>
   <script type="text/javascript">
     Samurai.init({
       merchant_key: 'a1ebafb6da5238fb8a3ac9f6',
@@ -10,6 +12,7 @@
 </head>
 
 <div class='payment_form'>
+  {% csrf_token %}
   <h1>Checkout</h1>
 
   <section class="shopping_cart">
@@ -29,14 +32,16 @@
   </section>
   <script>
     Samurai.ready(function(){
-      var $ = Samurai.jQuery;
       Samurai.on('form', 'payment', function(event, data) {  // Attach an event handler to process the transaction
-        $.post('/samurai_js/purchase', data.payment_method, function(data) {   // Send the payment_method via AJAX to the server
-          var transaction = $.parseJSON(data).transaction;
-          if(transaction.success) { // Update the page to display the results
-            $('form').children('.results').html('<h3>Your purchase is complete!</h3><h4>'+transaction.payment_method.payment_method.first_name+' '+transaction.payment_method.payment_method.last_name+': $'+transaction.amount+' - '+transaction.descriptor+'</h4>');
-            Samurai.trigger('form', 'completed');
-          } else { Samurai.PaymentErrorHandler.for($('form')[0]).handleErrorsFromResponse(transaction); }
+          $.post('/samurai_js/purchase/', 
+          data.payment_method, 
+          function(data) {   // Send the payment_method via AJAX to the server
+            alert($.parseJSON(data).payment_method_token)
+            var transaction = $.parseJSON(data).transaction;
+            if(transaction && transaction.success) { // Update the page to display the results
+              $('form').children('.results').html('<h3>Your purchase is complete!</h3><h4>'+transaction.payment_method.payment_method.first_name+' '+transaction.payment_method.payment_method.last_name+': $'+transaction.amount+' - '+transaction.descriptor+'</h4>');
+              Samurai.trigger('form', 'completed');
+            } else { Samurai.PaymentErrorHandler.for($('form')[0]).handleErrorsFromResponse(transaction); }
       }); });
     });
   </script>

@@ -23,7 +23,7 @@ def payment_form(request):
 # * On error, it redirects back to the payment form to display validation/card errors
 #
 def purchase(request):
-    payment_method_token = request.GET['payment_method_token']
+    payment_method_token = request.GET.get('payment_method_token', None)
     #purchase processing done here
     return HttpResponse('Payment method token is %s. Implementation Pending' % payment_method_token)
 
