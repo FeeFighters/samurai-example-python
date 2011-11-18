@@ -3,6 +3,15 @@
 {% block title %}Server to Server{% endblock %}
 
 {% block content %}
+
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
 <div class='payment_form'>
   <h1>Checkout</h1>
 
