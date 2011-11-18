@@ -1,4 +1,5 @@
 from django.shortcuts import render_to_response, get_object_or_404
+from django.http import HttpResponse
 from django.template import RequestContext
 from sample.forms import ServerToServerForm
 
@@ -26,7 +27,7 @@ def payment_form(request):
 #
 def purchase(request):
     #purchase processing done here
-    pass
+    return HttpResponse('Implementation Pending')
 
 
 # Purchase confirmation & receipt page
