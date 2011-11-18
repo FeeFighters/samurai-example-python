@@ -33,8 +33,11 @@ def purchase(request):
     if request.method == 'POST':
         token = request.POST.get('payment_method_token', None)
         trans = Processor.purchase(token, 10)
-        return_data = simplejson.dumps({'payment_method_token':token},
-                                        {'transaction': trans})
+        if trans.errors:
+            success=False
+        else:
+            success=True
+        return_data = simplejson.dumps({'transaction':{'success':success}})
         return HttpResponse(return_data)
     else:
         return redirect('/samurai_js/payment_form')

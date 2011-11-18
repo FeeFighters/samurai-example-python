@@ -48,7 +48,6 @@
           $.post('/samurai_js/purchase/', 
           data.payment_method, 
           function(data) {   // Send the payment_method via AJAX to the server
-            alert($.parseJSON(data).payment_method_token)
             var transaction = $.parseJSON(data).transaction;
             if(transaction && transaction.success) { // Update the page to display the results
               $('form').children('.results').html('<h3>Your purchase is complete!</h3><h4>'+transaction.payment_method.payment_method.first_name+' '+transaction.payment_method.payment_method.last_name+': $'+transaction.amount+' - '+transaction.descriptor+'</h4>');
