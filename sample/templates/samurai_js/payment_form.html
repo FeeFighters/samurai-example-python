@@ -17,8 +17,7 @@
   <script type="text/javascript" src="{{ STATIC_URL}}js/post.js"></script>
   <script type="text/javascript">
     Samurai.init({
-      merchant_key: 'a1ebafb6da5238fb8a3ac9f6',
-      sandbox: true
+      merchant_key: 'a1ebafb6da5238fb8a3ac9f6'
     });
   </script>
 </head>
@@ -52,7 +51,7 @@
             if(transaction && transaction.success) { // Update the page to display the results
               $('form').children('.results').html('<h3>Your purchase is complete!</h3><h4>'+transaction.payment_method.payment_method.first_name+' '+transaction.payment_method.payment_method.last_name+': $'+transaction.amount+' - '+transaction.descriptor+'</h4>');
               Samurai.trigger('form', 'completed');
-            } else { Samurai.PaymentErrorHandler.for($('form')[0]).handleErrorsFromResponse(transaction); }
+            } else { Samurai.PaymentErrorHandler.forForm($('form')[0]).handleErrorsFromResponse(transaction); }
       }); });
     });
   </script>

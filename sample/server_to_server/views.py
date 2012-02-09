@@ -42,7 +42,7 @@ def purchase(request):
         data = request.POST
         token = PaymentMethod.create(data.get('card_number'), data.get('cvv'), data.get('expiry_month'),
                                      data.get('expiry_year'), first_name=data.get('first_name'),
-                                     last_name=data.get('last_name'), sandbox=True)
+                                     last_name=data.get('last_name'))
         trans = Processor.purchase(token.payment_method_token, 10)
         if trans.errors:
             errors = parse_error(trans.errors)
