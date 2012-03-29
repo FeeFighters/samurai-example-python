@@ -9,11 +9,11 @@ from sample.helpers import ServerToServerForm, parse_error
 
 # Samurai imports
 import samurai.config as config
-from samurai.payment_method import PaymentMethod as PaymentMethod
-from samurai.processor import Processor as Processor
 config.merchant_key = 'a1ebafb6da5238fb8a3ac9f6'
 config.merchant_password = 'ae1aa640f6b735c4730fbb56'
 
+from samurai.payment_method import PaymentMethod as PaymentMethod
+from samurai.processor import Processor as Processor
 
 # Payment form for Server-to-Server API
 # -------------------------------------
